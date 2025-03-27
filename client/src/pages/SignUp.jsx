@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 export default function SignUp() {
   return (
     <div className="p-5 max-w-lg mx-auto">
@@ -27,8 +29,9 @@ export default function SignUp() {
       </form>
       <div className="flex gap-2 py-3 justify-center">
         <p className="font-medium">Have an account?</p>
-
+        <Link to={'/sign-in'}>
         <span className="text-blue-700 font-semibold">Sign in</span>
+        </Link>
       </div>
     </div>
   );

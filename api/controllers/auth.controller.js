@@ -11,13 +11,22 @@ export const signUp = async (req,res,next) => {
 
     try {
         await newUser.save();
-        res.status (201).json({
-            message:"user created successfully"
-        });  
+        const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);
+        res
+      .cookie("access_token",token, {httpOnly:true})
+      .status(200)
+      .json({
+        message: "user created successfully",
+       
+        user: {
+          ...newUser._doc,
+          password: undefined,
+        },
+      });
+       
     } catch (error) {
         next(error);
     }
-   
 };
 
 export const signIn = async(req,res,next)=>{
@@ -32,11 +41,17 @@ export const signIn = async(req,res,next)=>{
         return next(errorHandler(400,"invalid password or username"));
       }
       const token = jwt.sign({id:validUser._id},process.env.JWT_SECRET);
-      const { password: hashedPassword, ...rest} = validUser._doc;
+      
       res
       .cookie("access_token",token, {httpOnly:true})
       .status(200)
-      .json(validUser);
+      .json({message: "Login successful",
+       
+        user: {
+            ...validUser._doc,
+            password: undefined, 
+        },
+      });
     }catch(err){
         next(err);
     }

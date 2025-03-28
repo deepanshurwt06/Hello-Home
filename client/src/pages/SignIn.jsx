@@ -70,7 +70,7 @@ export default function SignIn() {
       <div className="flex gap-2 py-3 justify-center">
         <p className="font-medium">Dont have an account?</p>
         <Link to={"/sign-up"}>
-          <span className="text-blue-700 font-semibold">Sign in</span>
+          <span className="text-blue-700 font-semibold">Sign Up</span>
         </Link>
       </div>
       <p className="text-red-700 mt-5">

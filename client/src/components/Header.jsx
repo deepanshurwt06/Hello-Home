@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className="bg-slate-400">
-      <div className=" flex justify-between items-center max-w-7xl mx-auto py-3">
+      <div className=" flex justify-between items-center max-w-7xl mx-auto py-3 px-5">
         <Link to={"/"}>
           <h1 className="text-3xl font-bold ">Auth App</h1>
         </Link>
@@ -24,7 +24,7 @@ export default function Header() {
 
           <Link to={"/profile"}>
           {currentUser ? (
-            <img src={currentUser.user.profilePicture} alt="profile" className="h-7 w-7 rounded-full object-cover" />
+            <img src={currentUser.user.profilePicture} alt="profile" className="h-8 w-8 rounded-full object-cover" />
           ):(
             <li className="font-medium">Sign in</li>
           )}        

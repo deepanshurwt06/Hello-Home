@@ -12,17 +12,11 @@ export const signUp = async (req,res,next) => {
     try {
         await newUser.save();
         const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);
+        const {password : hashedPassword,...rest} = user._doc;
         res
       .cookie("access_token",token, {httpOnly:true,expires:expiryDate})
       .status(200)
-      .json({
-        message: "user created successfully",
-       
-        user: {
-          ...newUser._doc,
-          password: undefined,
-        },
-      });
+      .json(rest);
        
     } catch (error) {
         next(error);
@@ -41,15 +35,11 @@ export const signIn = async(req,res,next)=>{
         return next(errorHandler(400,"invalid password or username"));
       }
       const token = jwt.sign({id:validUser._id},process.env.JWT_SECRET);
+      const {password : hashedPassword,...rest} = user._doc;
       const expiryDate = new Date(Date.now() + 3600000);
       res
       .cookie("access_token",token, {httpOnly:true,expires:expiryDate}).status(200)
-      .json({message: "Login successful",
-        user: {
-            ...validUser._doc,
-            password: undefined, 
-        },
-      });
+      .json(rest);
     }catch(err){
         next(err);
     }
@@ -60,16 +50,12 @@ export const google = async(req,res,next)=>{
     const user = await User.findOne({email:req.body.email});
     if(user){
       const token = jwt.sign({id:user._id},process.env.JWT_SECRET);
-      const {password,...next} = user._doc;
+      const {password : hashedPassword,...rest} = user._doc;
       const expiryDate = new Date(Date.now() + 3600000);
       res
       .cookie("access_token",token,{httpOnly:true,expires:expiryDate})
       .status(200)
-      .json({message: "User logged in successfully",
-        user: {
-          ...user._doc,
-          password: undefined, // Hides password
-        },});
+      .json(rest);
     }else{
        const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
        const hashedPassword = await bcryptjs.hashSync(generatePassword,10);
@@ -79,7 +65,8 @@ export const google = async(req,res,next)=>{
         profilePicture : req.body.photo,
       });
       await newUser.save();
-      const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);      
+      const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);  
+      const {password : hashedPassword2,...rest} = user._doc;    
       const expiryDate = new Date(Date.now() + 3600000);
       res
       .cookie("access_token",token, {
@@ -87,14 +74,7 @@ export const google = async(req,res,next)=>{
         expires:expiryDate
       })
       .status(200)
-      .json({
-        message: "user created successfully",
-       
-        user: {
-          ...newUser._doc,
-          password: undefined,
-        },
-      });
+      .json(rest);
 
 
     }

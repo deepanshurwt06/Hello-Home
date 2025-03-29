@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
-  console.log("Current User:", currentUser);
+  
 
   return (
     <div className="bg-slate-400">
@@ -24,7 +24,7 @@ export default function Header() {
 
           <Link to={"/profile"}>
           {currentUser ? (
-            <img src={currentUser.user.profilePicture} alt="profile" className="h-8 w-8 rounded-full object-cover" />
+            <img src={currentUser.profilePicture} alt="profile" className="h-8 w-8 rounded-full object-cover" />
           ):(
             <li className="font-medium">Sign in</li>
           )}        

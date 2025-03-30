@@ -6,13 +6,13 @@ import jwt from "jsonwebtoken";
 export const signUp = async (req,res,next) => {
    
     const {username,email,password} = req.body;
-    const hashedPassword = await bcryptjs.hashSync(password,10);
+    const hashedPassword =  bcryptjs.hashSync(password,10);
     const newUser = new User({username,email,password:hashedPassword});
     const expiryDate = new Date(Date.now() + 3600000);
     try {
         await newUser.save();
         const token = jwt.sign({id:newUser._id},process.env.JWT_SECRET);
-        const {password : hashedPassword,...rest} = user._doc;
+        const {password : hashedPassword,...rest} = newUser._doc;
         res
       .cookie("access_token",token, {httpOnly:true,expires:expiryDate})
       .status(200)
@@ -35,7 +35,7 @@ export const signIn = async(req,res,next)=>{
         return next(errorHandler(400,"invalid password or username"));
       }
       const token = jwt.sign({id:validUser._id},process.env.JWT_SECRET);
-      const {password : hashedPassword,...rest} = user._doc;
+      const {password : hashedPassword,...rest} = validUser._doc;
       const expiryDate = new Date(Date.now() + 3600000);
       res
       .cookie("access_token",token, {httpOnly:true,expires:expiryDate}).status(200)

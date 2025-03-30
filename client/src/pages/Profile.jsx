@@ -9,10 +9,10 @@ export default function Profile() {
     const [imagePercentage, setImagePercentage] = useState(0);
     const [imageError, setImageError] = useState(false);  
     const [formData, setFormData] = useState({})
-  
+    
     
     const { currentUser } = useSelector((state) => state.user);
-
+  
     useEffect(()=>{
         if(image){
             handleFileUpload(image);
@@ -40,14 +40,13 @@ export default function Profile() {
         });
     };
 
-
+    
     return (
         <div className="flex flex-col max-w-lg mx-auto p-5 gap-6">
             <h1 className="text-4xl font-semibold text-center my-9">Profile</h1>
             <input  type="file" ref={fileRef} hidden accept="image/*" onChange={(e)=> setImage(e.target.files[0])}/>
              <form className="flex flex-col gap-6">
-                <img src={formData.profilePicture || currentUser.profilePicture} alt="profile" onClick={() => fileRef.current.click()}
-                 className="h-26 w-26 object-cover self-center rounded-full"/>
+                <img  src={formData.profilePicture || currentUser.profilePicture} alt="profile" onClick={() => fileRef.current.click()} className="h-26 w-26 object-cover self-center rounded-full"/>
              
                 <p className="text-sm self-center">
                     {imageError ?(

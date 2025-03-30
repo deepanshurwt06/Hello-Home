@@ -5,6 +5,7 @@ import userRoute from "./routes/user.route.js";
 import authRoute from "./routes/auth.route.js";
 dotenv.config();
 import cookieParser from "cookie-parser";
+import path from "path";
 
 mongoose
   .connect(process.env.MONGO)
@@ -15,13 +16,17 @@ mongoose
     console.log(err);
   });
 
+  const __dirname = path.resolve();
 
 const app = express();
-// app.use(cors({
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*',(req,res) => {
+  res.sendFile(path.join(__dirname, 'client','dist','index.html'))
+});
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

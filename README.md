@@ -89,7 +89,7 @@ npm run dev
 #### **Start Frontend**
 
 ```sh
-cd frontend
+cd client
 npm run dev
 ```
 

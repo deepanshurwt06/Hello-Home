@@ -1,5 +1,5 @@
 
-# MERN Authentication Boilerplate
+# Real Estate Management App
 
 This is a **MERN (MongoDB, Express, React, Node.js) authentication app**, designed as a boilerplate for applications that require user authentication. It includes essential features like **sign-in, sign-up, user profile updates, and image uploads**. Redux is used for state management, and the app is hosted on **Render**.
 

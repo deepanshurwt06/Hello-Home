@@ -4,6 +4,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/
 import { app } from "../firebase";
 import { useDispatch } from "react-redux";
 import { updateUserStart,  updateUserFailure, updateUserSuccess, deleteUserStart ,deleteUserSuccess ,deleteUserFailure , signOut} from "../redux/user/userSlice";
+import {Link} from "react-router-dom";
 
 export default function Profile() {
     const fileRef = useRef(null);
@@ -105,7 +106,7 @@ export default function Profile() {
         <div className="flex flex-col max-w-lg mx-auto p-5 gap-6">
             <h1 className="text-4xl font-semibold text-center my-9">Profile</h1>
             <input  type="file" ref={fileRef} hidden accept="image/*" onChange={(e)=> setImage(e.target.files[0])}/>
-             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <img  src={formData.profilePicture || currentUser.profilePicture} alt="profile" onClick={() => fileRef.current.click()}  onChange={handleChange} className="h-26 w-26 object-cover self-center rounded-full"/>
              
                 <p className="text-sm self-center">
@@ -138,12 +139,17 @@ export default function Profile() {
 
              <button className="p-3 bg-slate-800 font-medium text-white rounded-md uppercase hover:opacity-95 disabled:opacity-80">Update</button>
 
+             <Link className="bg-green-700 hover:opacity-95 text-white p-3 rounded-md uppercase text-center font-medium " to={"/create-listing"}>
+                 create listing
+             </Link>
+
              </form>
-             <div className="flex justify-between px-2  items-sm">
-                <span onClick={handleDeleteAccount} className="text-red-600 cursor-pointer">Delete Account</span>
-                <span onClick={handleSignOut} className="text-red-600 cursor-pointer">Sign out</span>
+
+             <div className="flex justify-between px-2 mt-[-8px]   items-sm">
+                <span onClick={handleDeleteAccount} className="text-red-600 cursor-pointer hover:text-red-900">Delete Account</span>
+                <span onClick={handleSignOut} className="text-red-600 cursor-pointer hover:text-red-900">Sign out</span>
              </div>
-             <p className="text-red-600 text-sm">{error && 'Something went wrong!'}</p>
+             <p className="text-red-600  text-sm">{error && 'Something went wrong!'}</p>
              <p className="text-green-600 text-sm">{updateSuccess && 'User is Updated successfully!'}</p>
 
         </div>

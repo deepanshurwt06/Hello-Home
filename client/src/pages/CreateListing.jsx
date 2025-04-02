@@ -8,11 +8,11 @@ import {
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function CreateListing() {
   const currentUser = useSelector((state) => state.user.currentUser);
- 
+
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
@@ -27,8 +27,7 @@ export default function CreateListing() {
     bathrooms: 1,
     parking: false,
     furnished: false,
-    userRef : '',
-    
+    userRef: "",
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -124,13 +123,10 @@ export default function CreateListing() {
       });
     }
   };
-  
-  
+
   useEffect(() => {
-    
     if (currentUser?._id) {
       setFormData((prev) => {
-       
         return { ...prev, userRef: currentUser._id };
       });
     }
@@ -139,13 +135,13 @@ export default function CreateListing() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if(formData.imageUrls.length < 1) return setError("Please upload at least one image");
-      if(+formData.regularPrice < +formData.discountPrice) return setError("Regular price should be greater than discount price");
+      if (formData.imageUrls.length < 1)
+        return setError("Please upload at least one image");
+      if (+formData.regularPrice < +formData.discountPrice)
+        return setError("Regular price should be greater than discount price");
       setLoading(true);
       setError(false);
-     
-    
-      
+
       const res = await fetch("/api/listing/create", {
         method: "POST",
         headers: {
@@ -305,23 +301,22 @@ export default function CreateListing() {
 
             {formData.offer && (
               <div className="flex gap-2 items-center pt-4">
-              <input
-                type="number"
-                id="discountPrice"
-                min="0"
-                max="100000"
-                required
-                className="px-5 py-3 border border-gray-400 bg-white outline-none rounded-md "
-                onChange={handleChange}
-                value={formData.discountPrice}
-              />
-              <div className="flex flex-col items-center">
-                <p className="text-md">Discounted Price</p>
-                <span className="text-xs">($ / month)</span>
+                <input
+                  type="number"
+                  id="discountPrice"
+                  min="0"
+                  max="100000"
+                  required
+                  className="px-5 py-3 border border-gray-400 bg-white outline-none rounded-md "
+                  onChange={handleChange}
+                  value={formData.discountPrice}
+                />
+                <div className="flex flex-col items-center">
+                  <p className="text-md">Discounted Price</p>
+                  <span className="text-xs">($ / month)</span>
+                </div>
               </div>
-            </div>
             )}
-            
           </div>
         </div>
 
@@ -374,7 +369,10 @@ export default function CreateListing() {
                 </button>
               </div>
             ))}
-          <button disabled={loading || uploading} className="p-3 bg-slate-700 text-white uppercase rounded font-semibold hover:opacity-90 disabled:opacity-70">
+          <button
+            disabled={loading || uploading}
+            className="p-3 bg-slate-700 text-white uppercase rounded font-semibold hover:opacity-90 disabled:opacity-70"
+          >
             {loading ? "creating..." : "create listing"}
           </button>
           {error && <p className="text-red-600 text-sm">{error}</p>}

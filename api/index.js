@@ -22,12 +22,6 @@ mongoose
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
-
-app.get('*',(req,res) => {
-  res.sendFile(path.join(__dirname, 'client','dist', 'index.html'))
-});
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +33,13 @@ app.listen(3000, () => {
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/listing", listingRoute);
+
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*',(req,res) => {
+  res.sendFile(path.join(__dirname, 'client','dist', 'index.html'))
+});
 
 // middleware used to handle errors in the application
 

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateUserStart,  updateUserFailure, updateUserSuccess, deleteUserStart ,deleteUserSuccess ,deleteUserFailure , signOut} from "../redux/user/userSlice";
 import {Link} from "react-router-dom";
 
+
 export default function Profile() {
     const fileRef = useRef(null);
     const [image, setImage] = useState(undefined);
@@ -13,6 +14,8 @@ export default function Profile() {
     const [imageError, setImageError] = useState(false);  
     const [formData, setFormData] = useState({})
     const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [showListingError, setShowListingError] = useState(false)
+    const [userListing, setUserListing] = useState([]);
     const dispatch = useDispatch();
     
     
@@ -101,6 +104,20 @@ export default function Profile() {
         }
     };
  
+    // const handleShowListing = async ()=>{
+    //   try {
+    //     setShowListingError(false);
+    //     const res = await fetch(`/api/user/listings/${currentUser._id}`);
+    //     const data = await res.json();
+    //     if(data.success === false){
+    //         setShowListingError(true);
+    //         return;
+    //     }
+    //     setUserListing(data);
+    //   } catch (error) {
+    //     showListingError(true);
+    //   }
+    // }
     
     return (
         <div className="flex flex-col max-w-lg mx-auto p-5 gap-6">
@@ -151,6 +168,11 @@ export default function Profile() {
              </div>
              <p className="text-red-600  text-sm">{error && 'Something went wrong!'}</p>
              <p className="text-green-600 text-sm">{updateSuccess && 'User is Updated successfully!'}</p>
+                
+               <Link to={'/listing'}>
+                 show Listing
+               </Link>
+               <p className="text-red-600 text-sm">{showListingError ? 'Error Showing Listing' : ''}</p>
 
         </div>
     )

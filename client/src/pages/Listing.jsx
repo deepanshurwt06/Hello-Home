@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector } from "react-redux"
+import { Link } from 'react-router-dom';
 
 
 export default function Listing() {
@@ -59,8 +60,12 @@ export default function Listing() {
             </div>
             <div className="flex flex-col items-center">
             <button onClick={()=>handleListingDelete(listing._id)} className="font-semibold text-red-500 cursor-pointer hover:opacity-80">Delete</button>
+
+            <Link to={`/update-listing/${listing._id}`}>
             <button className="font-semibold text-green-600 cursor-pointer hover:opacity-80">Edit</button>
+            </Link>
             </div>
+           
  
          </div>
         ))

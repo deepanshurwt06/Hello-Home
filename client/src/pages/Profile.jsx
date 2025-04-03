@@ -15,7 +15,7 @@ export default function Profile() {
     const [formData, setFormData] = useState({})
     const [updateSuccess, setUpdateSuccess] = useState(false);
     const [showListingError, setShowListingError] = useState(false)
-    const [userListing, setUserListing] = useState([]);
+    // const [userListing, setUserListing] = useState([]);
     const dispatch = useDispatch();
     
     
@@ -169,7 +169,7 @@ export default function Profile() {
              <p className="text-red-600  text-sm">{error && 'Something went wrong!'}</p>
              <p className="text-green-600 text-sm">{updateSuccess && 'User is Updated successfully!'}</p>
                 
-               <Link  to={'/listing'} className="text-green-800 uppercase text-center w-full">
+               <Link  to={'/show-listing'} className="text-green-800 uppercase text-center w-full">
                  show Listing
                </Link>
                <p className="text-red-600 text-sm">{showListingError ? 'Error Showing Listing' : ''}</p>

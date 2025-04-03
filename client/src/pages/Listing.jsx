@@ -56,7 +56,11 @@ export default function Listing() {
             <div key={listing._id} className="w-full border border-zinc-400 flex justify-between items-center p-3">
             <div className="flex gap-5 items-center ">
              <img className="w-22 h-22" src={listing.imageUrls[0]}  />
+
+             <Link to={`/listing-page/${listing._id}`}>
              <h4 className="text-xl capitalize font-semibold text-zinc-800 hover:underline truncate">{listing.name}</h4>
+             </Link>
+
             </div>
             <div className="flex flex-col items-center">
             <button onClick={()=>handleListingDelete(listing._id)} className="font-semibold text-red-500 cursor-pointer hover:opacity-80">Delete</button>

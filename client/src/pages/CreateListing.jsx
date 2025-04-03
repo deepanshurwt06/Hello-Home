@@ -22,7 +22,7 @@ export default function CreateListing() {
     type: "rent",
     offer: false,
     regularPrice: 50,
-    discountPrice: 0,
+    discountedPrice: 0,
     bedrooms: 1,
     bathrooms: 1,
     parking: false,
@@ -137,7 +137,7 @@ export default function CreateListing() {
     try {
       if (formData.imageUrls.length < 1)
         return setError("Please upload at least one image");
-      if (+formData.regularPrice < +formData.discountPrice)
+      if (+formData.regularPrice < +formData.discountedPrice)
         return setError("Regular price should be greater than discount price");
       setLoading(true);
       setError(false);
@@ -303,13 +303,13 @@ export default function CreateListing() {
               <div className="flex gap-2 items-center pt-4">
                 <input
                   type="number"
-                  id="discountPrice"
+                  id="discountedPrice"
                   min="0"
                   max="100000"
                   required
                   className="px-5 py-3 border border-gray-400 bg-white outline-none rounded-md "
                   onChange={handleChange}
-                  value={formData.discountPrice}
+                  value={formData.discountedPrice}
                 />
                 <div className="flex flex-col items-center">
                   <p className="text-md">Discounted Price</p>

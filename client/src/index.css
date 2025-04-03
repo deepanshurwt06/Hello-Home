@@ -4,3 +4,8 @@ body{
     background: #bdd0cd;
     font-family: sans-serif;
 }
+@layer base {
+    body {
+      font-family: "Inter","Lato","Roboto", sans-serif;
+    }
+  }

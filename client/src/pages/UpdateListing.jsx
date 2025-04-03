@@ -22,7 +22,7 @@ export default function CreateListing() {
     type: "rent",
     offer: false,
     regularPrice: 50,
-    discountPrice: 0,
+    discountedPrice: 0,
     bedrooms: 1,
     bathrooms: 1,
     parking: false,
@@ -121,6 +121,7 @@ export default function CreateListing() {
         type: e.target.id,
       });
     }
+   
     if (
       e.target.id === "parking" ||
       e.target.id === "furnished" ||
@@ -131,6 +132,7 @@ export default function CreateListing() {
         [e.target.id]: e.target.checked,
       });
     }
+   
     if (
       e.target.type === "number" ||
       e.target.type === "text" ||
@@ -138,10 +140,32 @@ export default function CreateListing() {
     ) {
       setFormData({
         ...formData,
-        [e.target.id]: e.target.value,
+        [e.target.id]: e.target.type === "number" ? Number(e.target.value) : e.target.value,
       });
     }
   };
+
+  // const handleChange = (e) => {
+  //   const { id, value, type, checked } = e.target;
+  
+  //   setFormData((prev) => {
+  //     let newValue = value;
+  
+  //     // Convert numerical inputs to numbers
+  //     if (type === "number") {
+  //       newValue = Number(value);
+  //     }
+  
+  //     if (id === "sale" || id === "rent") {
+  //       return { ...prev, type: id };
+  //     }
+  //     if (id === "parking" || id === "furnished" || id === "offer") {
+  //       return { ...prev, [id]: checked };
+  //     }
+  
+  //     return { ...prev, [id]: newValue };
+  //   });
+  // };
 
   useEffect(() => {
     if (currentUser?._id) {
@@ -153,10 +177,11 @@ export default function CreateListing() {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("form data before submission " ,formData);
     try {
       if (formData.imageUrls.length < 1)
         return setError("Please upload at least one image");
-      if (+formData.regularPrice < +formData.discountPrice)
+      if (+formData.regularPrice < +formData.discountedPrice)
         return setError("Regular price should be greater than discount price");
       setLoading(true);
       setError(false);
@@ -179,6 +204,7 @@ export default function CreateListing() {
       setError(error.message);
       setLoading(false);
     }
+    console.log("form data after submission " ,formData);
   };
 
   return (
@@ -322,13 +348,13 @@ export default function CreateListing() {
               <div className="flex gap-2 items-center pt-4">
                 <input
                   type="number"
-                  id="discountPrice"
+                  id="discountedPrice"
                   min="0"
                   max="100000"
                   required
                   className="px-5 py-3 border border-gray-400 bg-white outline-none rounded-md "
                   onChange={handleChange}
-                  value={formData.discountPrice}
+                  defaultValue={formData.discountedPrice || 0}
                 />
                 <div className="flex flex-col items-center">
                   <p className="text-md">Discounted Price</p>

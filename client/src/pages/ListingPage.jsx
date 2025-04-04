@@ -8,11 +8,15 @@ import "swiper/css/navigation";
 import "swiper/css/bundle";
 import { MdLocationOn } from "react-icons/md";
 import { FaBath, FaBed, FaChair, FaParking } from "react-icons/fa";
+import {useSelector} from "react-redux";
+import Contact from "../components/Contact";
 
 export default function ListingPage() {
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [contact, setContact] = useState(false);
   const params = useParams();
   console.log("Listing Data:", listing);
 
@@ -60,13 +64,13 @@ export default function ListingPage() {
           <p className="text-center text-xl my-6">No images available</p>
         )
       )}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto mb-5">
         {listing &&
           listing.name &&
           listing.regularPrice &&
           !loading &&
           !error && (
-            <div className="pt-7">
+            <div className="pt-7 ">
               <div className="flex p-6">
                 <h1 className="tracking-tight text-3xl font-medium">
                   {listing.name} - $ {listing.regularPrice} / month
@@ -91,7 +95,7 @@ export default function ListingPage() {
                 {listing.description}
               </p>
               <div className="px-6 pt-4">
-                <ul className="flex gap-3 flex-wrap sm:gap-7">
+                <ul className="flex gap-3 flex-wrap sm:gap-7 mb-5">
                   <li className="flex items-center gap-1 whitespace-nowrap text-green-900 font-semibold text-sm">
                     <FaBed className="text-xl" />
                     {listing.bedrooms > 1
@@ -113,7 +117,14 @@ export default function ListingPage() {
                     {listing.furnished ? "Furnished" : "Unfurnished"}
                   </li>
                 </ul>
+                 { currentUser && listing.userRef !== currentUser._id && !contact &&(
+                   <button onClick={()=> setContact(true)} className="bg-slate-700 text-white rounded-lg hover:opacity-95 uppercase p-3 w-full my-5">Contact  Landlord</button>
+                 ) }
+                 { contact && <Contact  listing={listing} /> }
+
+               
               </div>
+             
             </div>
           )}
       </div>

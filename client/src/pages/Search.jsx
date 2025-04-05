@@ -1,6 +1,7 @@
 import { set } from 'mongoose';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ListingItem from '../components/ListingItem';
 
 export default function Search() {
     const navigate = useNavigate();
@@ -182,8 +183,26 @@ export default function Search() {
             </div>
 
 
-            <div className="">
+            <div className="flex-1 ">
                <h1 className="text-3xl font-semibold text-zinc-800  border-b-1 border-zinc-400 p-3 mt-5">Listing result : </h1>
+
+               <div className='p-7 flex flex-wrap gap-7 sm:justify-center'>
+                {!loading && listing.length === 0 && (
+                  <p className='text-lg  text-slate-700'>No listing found</p>
+                )}
+                {
+                  loading && (
+                    <p className='text-xl text-slate-700 text-center w-full'>Loading...</p>
+                  )
+                }
+                {
+                  !loading && listing && listing.map((listing)=>(
+                    <ListingItem key={listing._id} listing={listing} />
+                  )
+
+                  )
+                }
+               </div>
             </div>
         </div>
     )

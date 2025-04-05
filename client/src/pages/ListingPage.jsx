@@ -73,7 +73,8 @@ export default function ListingPage() {
             <div className="pt-7 ">
               <div className="flex p-6">
                 <h1 className="tracking-tight text-3xl font-medium">
-                  {listing.name} - $ {listing.regularPrice} / month
+                  {listing.name} - $ {listing.regularPrice} 
+                  {listing.type === "rent" && " / month"}
                 </h1>
               </div>
               <div className="flex px-4 gap-2">
@@ -86,7 +87,7 @@ export default function ListingPage() {
                 </p>
                 {listing.offer && (
                   <p className="bg-green-900 text-white w-full max-w-[200px] text-center p-1 rounded-md">
-                    ${listing.regularPrice - listing.discountedPrice} discount
+                    ${listing.regularPrice - listing.discountedPrice} Off
                   </p>
                 )}
               </div>

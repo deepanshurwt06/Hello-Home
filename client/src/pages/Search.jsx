@@ -1,4 +1,4 @@
-import { set } from 'mongoose';
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ListingItem from '../components/ListingItem';
@@ -15,8 +15,9 @@ export default function Search() {
      order: "desc"
    });
    const [loading, setLoading] = useState(false);
-   const [listing, setListing] = useState([]);
-   console.log(listing);
+   const [listing, setListing] = useState([]);4
+   const [showMore, setShowMore] = useState(false)
+   
 
    useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
@@ -53,6 +54,9 @@ export default function Search() {
         const searchQuery = urlParams.toString();
         const res = await fetch(`/api/listing/get?${searchQuery}`);
         const data = await res.json();
+        if(data.length > 8){
+            setShowMore(true);
+        }
         setListing(data);
         setLoading(false);
        
@@ -97,6 +101,25 @@ export default function Search() {
      const searchQuery = urlParams.toString();
      navigate(`/search?${searchQuery}`);
    }
+
+   const onShowMoreClick = async()=>{
+    setLoading(true);
+    setShowMore(false);
+    const numberOfListing = listing.length;
+    const startIndex = numberOfListing;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("startIndex", startIndex);
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
+    const data = await res.json();
+    if(data.length < 9){
+        setShowMore(false);
+    }
+    else{
+      setShowMore(false);
+    }
+    setListing([...listing, ...data]);
+   };
 
     return (
         <div className="flex flex-col md:flex-row">
@@ -198,11 +221,17 @@ export default function Search() {
                 {
                   !loading && listing && listing.map((listing)=>(
                     <ListingItem key={listing._id} listing={listing} />
-                  )
-
-                  )
+                  ))
                 }
+                
                </div>
+               {showMore &&(
+                  <button onClick={()=> {
+                    onShowMoreClick();
+                  }} className='text-green-700 hover:underline pt-7 text-center w-full'>
+                    Show More
+                  </button>
+                )}
             </div>
         </div>
     )

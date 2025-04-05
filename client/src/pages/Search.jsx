@@ -64,8 +64,10 @@ export default function Search() {
                 </form>
 
             </div>
+
+
             <div className="">
-               <h1 className="text-3xl font-semibold text-zinc-800  border-b-2 border-zinc-400 p-3 mt-5">Listing result : </h1>
+               <h1 className="text-3xl font-semibold text-zinc-800  border-b-1 border-zinc-400 p-3 mt-5">Listing result : </h1>
             </div>
         </div>
     )

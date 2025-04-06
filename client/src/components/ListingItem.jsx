@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 
 export default function ListingItem({ listing }) {
-  console.log("regular price", listing.regularPrice);
-  console.log("discounted price", listing.discountPrice);
-  console.log("Listing props:", listing);
+ 
   return (
     <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full md:w-[320px] lg:w-[360px] ">
       <Link to={`/listing/${listing._id}`}>

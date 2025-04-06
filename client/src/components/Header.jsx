@@ -28,15 +28,15 @@ export default function Header() {
 
   return (
     <div className="bg-slate-400">
-      <div className=" flex justify-between items-center max-w-7xl mx-auto py-3 px-5">
+      <div className=" flex justify-between items-center max-w-7xl mx-auto py-3 px-2 sm:px-5">
         <Link to={"/"}>
-          <h1 className="text-3xl font-bold ">Auth App</h1>
+          <h1 className="text-xl font-semibold sm:text-2xl sm:font-bold ">Auth App</h1>
         </Link>
         
-        <form onSubmit={handleSubmit} className="bg-zinc-300 border border-zinc-400 p-3 rounded-full flex items-center">
+        <form onSubmit={handleSubmit} className=" border bg-[#cadff7] border-zinc-400 p-2 sm:p-3 rounded-full flex items-center mt-2">
           <input type="text" 
           placeholder="Search... "
-          className="bg-transparent focus:outline-none w-24 sm:w-64" 
+          className="bg-transparent focus:outline-none w-24 md:w-64 sm:w-40 " 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
          />
@@ -45,7 +45,7 @@ export default function Header() {
           </button>
         </form>
 
-        <ul className="flex gap-7">
+        <ul className="flex gap-3 sm:gap-7">
           <Link to={"/"}>
             <li className="font-medium">Home</li>
           </Link>

@@ -31,7 +31,7 @@ export default function Header() {
     <div className="bg-slate-400">
       <div className=" flex justify-between items-center max-w-7xl mx-auto  px-2 sm:px-5">
       <Link to="/" className="flex items-center ">
-      <img src={logo} alt="HelloHome Logo" className="h-20 w-auto" />
+      <img src={logo} alt="HelloHome Logo" className="h-25 font-bold w-auto" />
       <span className="text-xl font-bold text-slate-700 hidden sm:block">HelloHome</span>
     </Link>
         

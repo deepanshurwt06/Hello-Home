@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import logo from '../assets/logo-folder/black_on_trans.png'
 
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -28,20 +29,21 @@ export default function Header() {
 
   return (
     <div className="bg-slate-400">
-      <div className=" flex justify-between items-center max-w-7xl mx-auto py-3 px-2 sm:px-5">
-        <Link to={"/"}>
-          <h1 className="text-xl font-semibold sm:text-2xl sm:font-bold ">Auth App</h1>
-        </Link>
+      <div className=" flex justify-between items-center max-w-7xl mx-auto  px-2 sm:px-5">
+      <Link to="/" className="flex items-center ">
+      <img src={logo} alt="HelloHome Logo" className="h-20 w-auto" />
+      <span className="text-xl font-bold text-slate-700 hidden sm:block">HelloHome</span>
+    </Link>
         
         <form onSubmit={handleSubmit} className=" border bg-[#cadff7] border-zinc-400 p-2 sm:p-3 rounded-full flex items-center mt-2">
           <input type="text" 
           placeholder="Search... "
-          className="bg-transparent focus:outline-none w-24 md:w-64 sm:w-40 " 
+          className="bg-transparent focus:outline-none w-40 hidden lg:w-64 sm:block " 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
          />
           <button>
-            <FaSearch className="text-slate-600" />
+            <FaSearch className="text-slate-600  text-xl" />
           </button>
         </form>
 

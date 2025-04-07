@@ -305,7 +305,7 @@ export default function CreateListing() {
                   type="number"
                   id="discountedPrice"
                   min="0"
-                  max="100000"
+                  max="10000000"
                   required
                   className="px-5 py-3 border border-gray-400 bg-white outline-none rounded-md "
                   onChange={handleChange}

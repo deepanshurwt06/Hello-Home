@@ -18,7 +18,7 @@ export default function ListingPage() {
   const [error, setError] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
-  console.log("Listing Data:", listing);
+  
 
   useEffect(() => {
     const fetchListing = async () => {

@@ -33,7 +33,7 @@ export default function App() {
           />
         </Route>
         <Route
-          path="/listing-page/:listingId"
+          path="/listing/:listingId"
           element={<ListingPage />}
         ></Route>
       </Routes>

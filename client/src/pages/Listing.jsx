@@ -57,7 +57,7 @@ export default function Listing() {
             <div className="flex gap-5 items-center ">
              <img className="w-22 h-22" src={listing.imageUrls[0]}  />
 
-             <Link to={`/listing-page/${listing._id}`}>
+             <Link to={`/listing/${listing._id}`}>
              <h4 className="text-xl capitalize font-semibold text-zinc-800 hover:underline truncate">{listing.name}</h4>
              </Link>
 

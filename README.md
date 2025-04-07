@@ -1,29 +1,46 @@
 
-# Real Estate Management App
+# HEllo HOME
 
-This is a **MERN (MongoDB, Express, React, Node.js) authentication app**, designed as a boilerplate for applications that require user authentication. It includes essential features like **sign-in, sign-up, user profile updates, and image uploads**. Redux is used for state management, and the app is hosted on **Render**.
+HelloHome is a modern, full-stack real estate listing web application where users can browse, search, and post property listings. Built with a mobile-first responsive design, it's optimized for a great user experience across all devices.
+
+---
 
 ## 🚀 Features
 
-- 🔐 User Authentication (Sign Up, Sign In , Sign Out)
+- 🔐 User authentication (Sign up, Log in, Log out)
+- 🏠 Add, edit, delete listings
 - 👤 Update User Profile (Username, Email, Password)
-- 🖼️ Upload & Update Profile Picture
-- ❌ Delete User Account
-- 🔄 Redux for State Management
-- 🌍 Hosted on **Render**
+- 🔍 Search and filter listings
+- 📱 Responsive mobile-friendly design
+- ⚡ Infinite scroll / "Show More" functionality
+- 📷 Image upload for listings
+- 🎨 Custom logo and favicon
 
 ---
 
-## 🛠️ Tech Stack
+## 🔧 Tech Stack
 
-- **Frontend:** React.js (with Redux for state management)
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **State Management:** Redux Toolkit
-- **File Uploads:** Firebase Storage
-- **Hosting:** Render
+**Frontend:**
+- React
+- Tailwind CSS
+- React Router
+
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB (with Mongoose)
+
+**Authentication:**
+- Firebase Authentication
+
+**Hosting & Deployment:**
+- GitHub Pages / Vercel (frontend)
+- Render / Railway / Heroku (backend)
 
 ---
+
+
+
 
 ## 🔧 Installation & Setup
 
@@ -97,20 +114,22 @@ The app should now be running at [**http://localhost:5173**](http://localhost:51
 
 ---
 
-## 🖥️ API Endpoints
 
-| Method     | Endpoint               | Description           |
-| ---------- | ---------------------- | --------------------- |
-| **POST**   | `/api/auth/signup`     | Register a new user   |
-| **POST**   | `/api/auth/signin`     | Login user            |
-| **POST**   | `/api/auth/google`     | Google Authentication |
-| **PUT**    | `/api/user/update/:id` | Update user details   |
-| **DELETE** | `/api/user/delete/:id` | Delete user           |
-| **SIGNOUT** | `/api/auth/signout`   | User Sign Out         |
 
 ## 🚀 Deployment
 
 The app is hosted on **Render**. You can check it out here: 🔗https://mern-auth-n05i.onrender.com/
+
+---
+
+📌 To Do
+Add messaging/chat between buyers & sellers
+
+Add map integration
+
+Improve SEO and metadata
+
+Deploy fullstack app
 
 ---
 

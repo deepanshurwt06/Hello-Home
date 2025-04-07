@@ -17,12 +17,12 @@ export default function About() {
           <span className="text-green-200">management</span> and discovery <br /> for everyone .
         </h1>
       </div>
-      <div className=" w-full border-t-2 text-slate-400 border-b-2 ">
-        <div className="max-w-7xl mx-auto  text-xl p-3 flex flex-col   ">
+      <div className=" w-full border-t-2  text-slate-400 border-b-2 ">
+        <div className="max-w-7xl mx-auto  text-xl p-3 px-2 flex flex-col   ">
           <h1 className="text-2xl font-semibold font-popins text-slate-800 text-center pb-3">
             About Real Estate
           </h1>
-          <h1 className="font-semibold text-slate-700 mb-3">
+          <h1 className="text-sm sm:text-lg font-semibold text-slate-700 mb-3">
             Our platform helps users easily browse, list, and manage rental and
             sale properties. Whether you’re a landlord, buyer, or renter, we’ve
             built tools to make the process smooth and transparent.
@@ -32,7 +32,7 @@ export default function About() {
 
       <div className="border-b-2 text-slate-400 my-5">
         <div className=" flex justify-between max-w-7xl mx-auto pb-5">
-          <div className="">
+          <div className="pl-3">
             <h1 className="text-xl text-slate-600 font-mono pb-1 font-semibold">
               Features
             </h1>
@@ -58,15 +58,15 @@ export default function About() {
         </div>
       </div>
 
-      <p className="text-slate-700 text-lg mt-4 px-8 text-center">
-        <span className="text-red-500">This</span> platform was built{" "}
+      <p className="text-slate-700 text-md sm:text-lg mt-4 px-8 text-center">
+        <span className="  text-red-500">This</span> platform was built{" "}
         <span className="text-blue-700">with</span> passion by a solo developer
         who loves crafting clean, functional, and fun web experiences.{" "}
         <span className="text-red-500">Every</span> feature, bug fix, and line
         of code? <span className="text-red-500">Yep</span>— all me! 💻🚀
       </p>
 
-      <p className="text-slate-700 text-lg p-8 text-center">This project is open source! <span className="text-green-700">Contributions</span>, <span className="text-green-700">issues</span>, and <span className="text-green-700">stars</span> are always welcome — check it out on {' '}
+      <p className="text-slate-700 text-md sm:text-lg p-8 text-center">This project is open source! <span className="text-green-700">Contributions</span>, <span className="text-green-700">issues</span>, and <span className="text-green-700">stars</span> are always welcome — check it out on {' '}
          <a href="https://github.com/deepanshurwt06/estate-management" target="_blank" rel="noopener noreferrer" >
          
          <span className="text-blue-700 hover:underline cursor-pointer"> GitHub </span>🚀

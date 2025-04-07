@@ -192,9 +192,9 @@ export default function Search() {
             />
           </div>
 
-          <div className="flex gap-6 fex-wrap items-center ">
-            <label className="font-semibold">Type :</label>
-            <div className=" flex gap-2 ">
+          <div className="flex gap-6 flex-wrap items-center ">
+            <label className="font-semibold ">Type :</label>
+            <div className=" flex gap-2 flex-wrap">
               <input
                 type="checkbox"
                 id="all"

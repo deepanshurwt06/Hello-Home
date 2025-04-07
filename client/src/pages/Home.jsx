@@ -77,7 +77,7 @@ export default function Home() {
           offerListing.map((listing) => (
             <SwiperSlide key={listing._id}>
               <div
-                className="h-[550px] w-[95%] mx-auto bg-center bg-no-repeat bg-cover"
+                className="h-[400px] sm:h-[550px] w-[95%] mx-auto bg-center bg-no-repeat bg-cover"
                 style={{ backgroundImage: `url("${listing.imageUrls?.[0]}")` }}
               />
             </SwiperSlide>

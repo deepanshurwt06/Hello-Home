@@ -47,8 +47,8 @@ HelloHome is a modern, full-stack real estate listing web application where user
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/YOUR_GITHUB_USERNAME/mern-auth.git
-cd mern-auth
+git clone https://github.com/deepanshurwt06/Hello-Home
+cd Hello-Home
 ```
 
 ### 2️⃣ Install Dependencies
@@ -137,7 +137,7 @@ Deploy fullstack app
 
 Feel free to fork this repo, open issues, and submit pull requests! 🚀
 
-📂 **GitHub Repo:https://github.com/deepanshurwt06/mern-auth 👨‍💻 **GitHub Profile: https://github.com/deepanshurwt06
+📂 **GitHub Repo:https://github.com/deepanshurwt06/Hello-Home 👨‍💻 **GitHub Profile: https://github.com/deepanshurwt06
 
 ---
 
